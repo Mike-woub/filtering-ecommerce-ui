@@ -52,10 +52,9 @@ const filteredItems = products.filter((product) =>
       title={title}
       star={star}
       reviews={reviews}
-       newPrice={newPrice} 
+      newPrice={newPrice} 
       prevPrice={prevPrice}
-     
-      
+
       />
       )
     }
@@ -64,10 +63,10 @@ const filteredItems = products.filter((product) =>
 
   return (
     <div>
-      <Nav/>
+      <Nav query ={query} handleInputChange={handleInputChange}/>
       <Sidebar handleChange={handleChange}/>
-      <Recommended/>
-      <Products/>
+      <Recommended handleClick={handleClick}/>
+      <Products result={result}/>
     
     </div>
   )
