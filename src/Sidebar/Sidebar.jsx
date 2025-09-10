@@ -9,7 +9,7 @@ const Sidebar = ({handleChange}) => {
   return <>
   <section className="sidebar">
     <div className="logo-container">
-        <h1><AiOutlineShoppingCart/></h1>
+        <h1><AiOutlineShoppingCart/> Filtering Ecommerce</h1>
         <Category handleChange={handleChange}/>
         <Price handleChange={handleChange}/>
         <Colors handleChange={handleChange}/>
