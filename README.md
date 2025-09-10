@@ -1,12 +1,47 @@
-# React + Vite
+# 🛍️ Filtering eCommerce UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive eCommerce user interface built with **React** and **Vite**, featuring advanced product filtering by category, brand, color, and price. Designed with scalability and clean architecture in mind, this project demonstrates modular component design and dynamic UI rendering for modern shopping experiences.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🔍 **Live Search Filtering** — Instantly filter products by name
+- 🎨 **Category & Color Filters** — Select products by type or color
+- 🏷️ **Brand Filtering** — Filter by company (Nike, Adidas, Puma, Vans)
+- 💰 **Price Filtering** — Sort and filter by price ranges
+- ⭐ **Rating Display** — Visual star ratings using `react-icons`
+- 📦 **Reusable Components** — Modular design for scalability
+- ⚡ **Vite-Powered** — Fast development and hot module replacement
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+
+## 🧱 Tech Stack
+
+| Technology     | Purpose                        |
+|----------------|--------------------------------|
+| React          | UI library                     |
+| Vite           | Build tool & dev server        |
+| React Icons    | Iconography                    |
+| CSS            | Styling                        |
+| JavaScript     | Logic and interactivity        |
+
+---
+
+## 🛠️ Installation & Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/Mike-woub/filtering-ecommerce-ui.git
+
+# Navigate into the project
+cd filtering-ecommerce-ui
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+
+
