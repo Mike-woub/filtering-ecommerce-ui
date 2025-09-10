@@ -37,7 +37,7 @@ const filteredItems = products.filter((product) =>
 
       //filtering Input Items
       if (query){
-        filteredProducts=filterdItems
+        filteredProducts=filteredItems
       }
 
       //Selected Filter
