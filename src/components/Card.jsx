@@ -5,7 +5,8 @@ import {AiFillStar} from 'react-icons/ai'
 const Card = ({img, title, star, reviews, prevPrice, newPrice, addToCart}) => {
   return (
      <section className="card">
-           <img src={img} alt={title} className='card-img' />
+           <div className="card-img-wrapper"><img src={img} alt={title} className='card-img' /></div>
+           
            <div className="card-details">
             <h3 className="card-title">{title}</h3>
             <section className="card-reviews">
@@ -17,10 +18,13 @@ const Card = ({img, title, star, reviews, prevPrice, newPrice, addToCart}) => {
                   <del>{prevPrice}</del> {newPrice}
               </div>
               <div className="bag-icon">
-                <BsFillBagHeartFill /> <button className='add-to-cart-btn' onClick = {addToCart}>+</button>
+                <BsFillBagHeartFill /> 
               </div>
-             
             </section>
+            
+              <section className="add-to-cart">
+                <button className='add-to-cart-btn' onClick = {addToCart}>Add to Cart</button>
+              </section>
            </div>
         </section>
   )

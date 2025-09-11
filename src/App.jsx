@@ -29,7 +29,7 @@ const App = () => {
   }
 
   // Clear message after 3 seconds
-  setTimeout(() => setShowMessage(''), 3000);
+  setTimeout(() => setShowMessage(''), 800);
 };
 
  //removeFromCart Function 

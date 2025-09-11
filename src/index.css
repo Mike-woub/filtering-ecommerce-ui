@@ -13,3 +13,6 @@ li{
     list-style: none;
 }
 
+#root{
+    margin:0;
+}

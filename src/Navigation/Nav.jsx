@@ -6,6 +6,7 @@ import "./nav.css";
 const Nav = ({query, handleInputChange, toggleCart}) => {
  
   return <nav>
+    <h1><AiOutlineShoppingCart/> Filtering Ecommerce</h1>
     <div className="nav-container">
       <input type="text" className='search-input' placeholder='Enter your search shoes' onChange={handleInputChange} value={query}/>
     </div>

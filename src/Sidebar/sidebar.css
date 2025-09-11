@@ -13,7 +13,10 @@
     display:flex;
     flex-direction: column;
     align-items: center;
-
+     background-image: url('./../img/bg-image.jpg');
+     background: transparent;
+     color:white;
+margin-top: 110px;
 }
 
 .logo-container{

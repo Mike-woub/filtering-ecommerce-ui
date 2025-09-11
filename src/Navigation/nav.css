@@ -1,19 +1,29 @@
+body{
+    background-color: rgb(15, 15, 54);
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-image: url('./../img/bg-img4.jpg');
+}
 nav{
+     background-image: url('./../img/bg-image.jpg');
+     background: transparent;
     display: flex;
+    position: fixed;
+    width: 100%;
     border-bottom: 2px solid #f3f3f3;
     justify-content: space-around;
     align-items: center;
     padding: 20px;
     z-index: 999;
-    margin-left: 2rem;
+    color: white;
 }
 
 input{
     padding: 12px 20px;
-    border: none;
+    border: 2px solid blue;
     background-color: #f7f6f6;
     outline: none;
-    margin-right: 20px;
     border-radius: 5px;
     position: relative;
     width :14rem;
@@ -24,5 +34,5 @@ input{
     width: 1.5rem;
     height: 1.5rem;
     margin-left:2rem;
-    color:#333;
+    color:white;
 }

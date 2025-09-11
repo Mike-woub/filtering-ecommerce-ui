@@ -14,7 +14,8 @@ const Cart = ({ cartItems, removeFromCart }) => {
           <div className="cart-grid">
             {cartItems.map((item, index) => (
               <div key={index} className="cart-item">
-                <img src={item.img} alt={item.title} className="cart-img" />
+                <div className="img-wrapper">
+                <img src={item.img} alt={item.title} className="cart-img" /></div>
                 <div className="cart-info">
                   <p>{item.title}</p>
                   <p>${item.newPrice}</p>

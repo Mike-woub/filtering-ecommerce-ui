@@ -33,7 +33,9 @@
     background-color: #eee;
     border-radius: 50%;
 }
+
 .sidebar-label-container:hover input~ .checkmark{
+    border-color: aqua;
     background-color: #ccc;
 }
 .sidebar-label-container input:checked ~.checkmark{

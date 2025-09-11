@@ -9,10 +9,12 @@ const Sidebar = ({handleChange}) => {
   return <>
   <section className="sidebar">
     <div className="logo-container">
-        <h1><AiOutlineShoppingCart/> Filtering Ecommerce</h1>
         <Category handleChange={handleChange}/>
+        <hr />
         <Price handleChange={handleChange}/>
+        <hr />
         <Colors handleChange={handleChange}/>
+        
     </div>
   </section>
   </>

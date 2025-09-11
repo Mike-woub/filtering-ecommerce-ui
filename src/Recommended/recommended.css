@@ -1,21 +1,45 @@
-.recommended-flex{
-    display : flex;
-    margin-left:20rem;
+.main-content {
+    position: fixed;
+    top: 100px;            /* Push below the fixed nav */
+    left: 300px;          /* Push right of the sidebar */
+    right: 0;
+    padding: 20px;
+    background-color: transparent; /* Or set a background if needed */
+    z-index: 998;         /* Just below nav if nav is 999 */
+    box-sizing: border-box;
+
 }
-.recommended-title{
-    margin-left: 20rem;
+
+/* Title styling */
+.recommended-title {
+    color: white;
     margin-bottom: 20px;
-    margin-top:20px;
-    font-size:20px;
+    font-size: 20px;
     font-family: sans-serif;
 }
-.btns{
+
+/* Flex container for buttons */
+.recommended-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: white;
+    padding-bottom: 0.5px;
+    border-bottom: 2px solid white;
+}
+
+/* Button styling */
+.btns {
     padding: 10px 20px;
-    margin-right: 6px;
-    background: transparent;
-    border: none;
     border: 0.6px solid #ccc;
     border-radius: 5px;
-    color: #323232;
+    color: rgb(2, 2, 85);
+    font-weight: 700;
     cursor: pointer;
+    background-color: #b8f5f5;
+    transition: background-color 0.3s ease;
+}
+
+.btns:hover {
+    background-color: #e0e0e0;
 }
