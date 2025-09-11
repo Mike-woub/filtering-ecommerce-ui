@@ -42,3 +42,31 @@
 .bag-icon{
     color:#535353;
 }
+.add-to-cart-btn{
+    color:green;
+    background: transparent;
+    border:1px solid green;
+}
+.add-to-cart-btn:hover{
+    cursor: pointer;
+  color: darkgreen;
+  background-color: wheat;
+}
+.cart-alert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: green;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 999;
+  animation: fadeOut 3s forwards;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}

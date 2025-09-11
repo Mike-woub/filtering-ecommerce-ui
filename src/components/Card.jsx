@@ -2,7 +2,7 @@ import React from 'react'
 import { BsFillBagHeartFill } from 'react-icons/bs'
 import {AiFillStar} from 'react-icons/ai'
 
-const Card = ({img, title, star, reviews, prevPrice, newPrice}) => {
+const Card = ({img, title, star, reviews, prevPrice, newPrice, addToCart}) => {
   return (
      <section className="card">
            <img src={img} alt={title} className='card-img' />
@@ -17,7 +17,7 @@ const Card = ({img, title, star, reviews, prevPrice, newPrice}) => {
                   <del>{prevPrice}</del> {newPrice}
               </div>
               <div className="bag-icon">
-                <BsFillBagHeartFill/>
+                <BsFillBagHeartFill /> <button className='add-to-cart-btn' onClick = {addToCart}>+</button>
               </div>
              
             </section>
