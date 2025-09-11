@@ -1,103 +1,168 @@
-import React, { useState } from 'react'
-import Nav from './Navigation/Nav'
-import Products from './Products/Products'
-import Recommended from './Recommended/Recommended'
-import Sidebar from './Sidebar/sidebar'
+import React, { useState } from 'react';
+import Nav from './Navigation/Nav';
+import Products from './Products/Products';
+import Recommended from './Recommended/Recommended';
+import Sidebar from './Sidebar/sidebar';
 
-//Database
-import products from './db/data'
-import Category from './Sidebar/Category/Category'
-import Card from './components/Card'
-import Cart from './Cart/Cart'
-
+// Database
+import products from './db/data';
+import Card from './components/Card';
 
 const App = () => {
-  const [selectedCategory, setSelectedCategory]=useState(null);
-  const [cartItems, setCartItems]=useState([]);
-   const [cartStatus, setCartStatus]=useState(false);
-   const [showMessage, setShowMessage] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedBrand, setSelectedBrand] = useState(null);
+  const [selectedColor, setSelectedColor] = useState(null);
+  const [selectedPrice, setSelectedPrice] = useState(null);
+  const [query, setQuery] = useState("");
 
-  //addToCart Function
+  const [cartItems, setCartItems] = useState([]);
+  const [cartStatus, setCartStatus] = useState(false);
+  const [showMessage, setShowMessage] = useState('');
+
+  // Add to cart
   const addToCart = (product) => {
-  const alreadyInCart = cartItems.some(item => item.title === product.title);
+    const existingIndex = cartItems.findIndex(item => item.title === product.title);
+    if (existingIndex !== -1) {
+      const updatedCart = [...cartItems];
+      updatedCart[existingIndex].quantity += 1;
+      setCartItems(updatedCart);
+      setShowMessage('Quantity updated!');
+    } else {
+      setCartItems([...cartItems, { ...product, quantity: 1 }]);
+      setShowMessage('Added to cart!');
+    }
+    setTimeout(() => setShowMessage(''), 800);
+  };
 
-  if (alreadyInCart) {
-    setShowMessage('Already added to cart!');
-  } else {
-    setCartItems([...cartItems, product]);
-    setShowMessage('Added to cart!');
-  }
+  // Quantity controls
+  const increaseQuantity = (index) => {
+    const updated = [...cartItems];
+    updated[index].quantity += 1;
+    setCartItems(updated);
+  };
 
-  // Clear message after 3 seconds
-  setTimeout(() => setShowMessage(''), 800);
-};
+  const decreaseQuantity = (index) => {
+    const updated = [...cartItems];
+    if (updated[index].quantity > 1) {
+      updated[index].quantity -= 1;
+      setCartItems(updated);
+    } else {
+      removeFromCart(index);
+    }
+  };
 
- //removeFromCart Function 
- const   removeFromCart = (index) => {
-  setCartItems(cartItems.filter((_, i) => i !== index));
-};
+  const removeFromCart = (index) => {
+    setCartItems(cartItems.filter((_, i) => i !== index));
+  };
 
+  const clearCart = () => {
+    setCartItems([]);
+    setShowMessage('Cart cleared!');
+    setTimeout(() => setShowMessage(''), 2000);
+  };
 
-  // ------Input Filter------
-  const [query, setQuery]=useState("");
-  
-  const handleInputChange = event =>{
-    setQuery(event.target.value)
-  }
-const filteredItems = products.filter((product) =>
-  product.title.toLocaleLowerCase().indexOf(query.toLocaleLowerCase()) !== -1
-);
+  // Reset all filters
+  const resetFilters = () => {
+    setSelectedCategory(null);
+    setSelectedBrand(null);
+    setSelectedColor(null);
+    setSelectedPrice(null);
+    setQuery('');
+    setCartStatus(false);
+  };
 
-  // ------Radio Filter------
+  // Filter handlers
+  const handleInputChange = (event) => {
+    setQuery(event.target.value);
+    setCartStatus(false);
+  };
 
-  const handleChange =event=>{
-    setSelectedCategory(event.target.value)
-  }
+  const handleBrandChange = (event) => {
+    setSelectedBrand(event.target.value);
+    setCartStatus(false);
+  };
 
-    // ------Buttons Filter------
-    const handleClick=event=>{
-      setSelectedCategory(event.target.value)
+  const handleColorChange = (event) => {
+    setSelectedColor(event.target.value);
+    setCartStatus(false);
+  };
+
+  const handlePriceChange = (event) => {
+    setSelectedPrice(event.target.value);
+    setCartStatus(false);
+  };
+
+  const handleCategoryChange = (event) => {
+    setSelectedCategory(event.target.value);
+    setCartStatus(false);
+  };
+
+  // AND logic filtering including category
+  function filteredData(products, query, brand, color, price, category) {
+    let filtered = products;
+
+    // Apply search filter
+    if (query) {
+      filtered = filtered.filter(product =>
+        product.title.toLowerCase().includes(query.toLowerCase())
+      );
     }
 
-    function filteredData(products,selected,query){
-      let filteredProducts =products
+    // Apply filters only if they exist — all must match
+    filtered = filtered.filter(product => {
+      const matchesBrand = !brand || product.company.toLowerCase() === brand.toLowerCase();
+      const matchesColor = !color || product.color.toLowerCase() === color.toLowerCase();
+      const matchesPrice = !price || Number(product.newPrice) === Number(price);
+      const matchesCategory = !category || product.category.toLowerCase() === category.toLowerCase();
 
-      //filtering Input Items
-      if (query){
-        filteredProducts=filteredItems
-      }
+      return matchesBrand && matchesColor && matchesPrice && matchesCategory;
+    });
 
-      //Selected Filter
-      if (selected){
-        filteredProducts =filteredProducts.filter(({category, color, company,newPrice, title}) => category === selected || color === selected || company === selected ||newPrice ===selected || title === selected);
-      }
-
-      return filteredProducts.map(({img, title, star, reviews, prevPrice, newPrice})=>
-      <Card 
-      key={Math.random()}
-      img={img}
-      title={title}
-      star={star}
-      reviews={reviews}
-      newPrice={newPrice} 
-      prevPrice={prevPrice}
-      addToCart={() => addToCart({ img, title, newPrice })}
-
+    return filtered.map(({ id, img, title, star, reviews, prevPrice, newPrice }) => (
+      <Card
+        key={id}
+        img={img}
+        title={title}
+        star={star}
+        reviews={reviews}
+        newPrice={newPrice}
+        prevPrice={prevPrice}
+        addToCart={() => addToCart({ img, title, newPrice })}
       />
-      )
-    }
+    ));
+  }
 
-    const result = filteredData(products, selectedCategory, query)
+  const result = filteredData(products, query, selectedBrand, selectedColor, selectedPrice, selectedCategory);
 
   return (
     <div>
-      <Nav query ={query} handleInputChange={handleInputChange} cartStatus={cartStatus} toggleCart={() => setCartStatus(prev => !prev)} />
-      <Sidebar handleChange={handleChange}/>
-      <Recommended handleClick={handleClick}/>
-      <Products result={result}  cartStatus={cartStatus}
-  cartItems={cartItems} removeFromCart={removeFromCart} showMessage={showMessage}/>
+      <Nav
+        query={query}
+        handleInputChange={handleInputChange}
+        cartStatus={cartStatus}
+        toggleCart={() => setCartStatus(prev => !prev)}
+      />
+      <Sidebar
+        handleBrandChange={handleBrandChange}
+        handleColorChange={handleColorChange}
+        handlePriceChange={handlePriceChange}
+        handleCategoryChange={handleCategoryChange}
+        resetFilters={resetFilters}
+      />
+      <Recommended handleBrandChange={handleBrandChange} />
+      <Products
+        result={result}
+        cartStatus={cartStatus}
+        cartItems={cartItems}
+        removeFromCart={removeFromCart}
+        showMessage={showMessage}
+        increaseQuantity={increaseQuantity}
+        decreaseQuantity={decreaseQuantity}
+        clearCart={clearCart}
+        toggleCart={() => setCartStatus(prev => !prev)}
+      />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

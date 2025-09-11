@@ -10,16 +10,13 @@ const Nav = ({query, handleInputChange, toggleCart}) => {
     <div className="nav-container">
       <input type="text" className='search-input' placeholder='Enter your search shoes' onChange={handleInputChange} value={query}/>
     </div>
-    <div className="profile-container">
-      <a href="#">
-        <FiHeart className='nav-icons'/>
-      </a>
+     
+    <div className="cart-container">
+      <h2>Your Cart</h2>
       <a href="#">
         <AiOutlineShoppingCart className='nav-icons' onClick={toggleCart}/>
       </a>
-      <a href="#">
-        <AiOutlineUserAdd className='nav-icons'/>
-      </a>
+   
 
     </div>
   </nav>

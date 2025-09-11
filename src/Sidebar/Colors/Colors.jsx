@@ -1,51 +1,55 @@
-import React from 'react'
-import './colors.css'
-import Input from '../../components/input'
-const Colors = ({handleChange}) => {
+import React from 'react';
+import './colors.css';
+import Input from '../../components/input';
+
+const Colors = ({ handleChange }) => {
   return (
     <div>
-        <h2 className="sidebar-title color-title">Colors</h2> 
-          <label className="sidebar-label-container">
-            <input type="radio" onChange={handleChange} value="" name="test1"/>
-            <span className="checkmark all"></span>All
+      <h2 className="sidebar-title">Color</h2>
+      <div>
+        <label className="sidebar-label-container">
+          <input type="radio" onChange={handleChange} value="" name="color" />
+          <span className="checkmark all"></span>All
         </label>
 
         <Input
-        handleChange={handleChange}
-        title="Balck"
-        value="balck"
-        name="test1"
-        color="black"
+          handleChange={handleChange}
+          value="black"
+          title="Black"
+          name="color"
+          color="black"
         />
         <Input
-        handleChange={handleChange}
-        title="Blue"
-        value="blue"
-        name="test1"
-        color="blue"
+          handleChange={handleChange}
+          value="blue"
+          title="Blue"
+          name="color"
+          color="blue"
         />
         <Input
-        handleChange={handleChange}
-        title="Red"
-        value="red"
-        name="test1"
-        color="red"
+          handleChange={handleChange}
+          value="red"
+          title="Red"
+          name="color"
+          color="red"
         />
         <Input
-        handleChange={handleChange}
-        title="Green"
-        value="green"
-        name="test1"
-        color="green"
+          handleChange={handleChange}
+          value="green"
+          title="Green"
+          name="color"
+          color="green"
         />
-         <label className="sidebar-label-container">
-            <input type="radio" onChange={handleChange} value="white" name="test1"/>
-            <span className="chekmark"></span>
-            <span className="checkmark" style={{background:"white", border:"2px solid black", color:"black"}}></span>White
-        </label>
-        
+        <Input
+          handleChange={handleChange}
+          value="white"
+          title="White"
+          name="color"
+          color="white"
+        />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Colors
+export default Colors;

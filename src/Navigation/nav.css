@@ -30,9 +30,14 @@ input{
 
 }
 
+.cart-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .nav-icons{
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 3.5rem;
+    height: 3.5rem;
     margin-left:2rem;
     color:white;
 }

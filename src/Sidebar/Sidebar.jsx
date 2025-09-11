@@ -1,24 +1,45 @@
-import Category from './Category/Category'
-import Price from './Price/Price'
-import Colors from './Colors/Colors'
-import React from 'react'
-import './sidebar.css'
-import {AiOutlineShoppingCart} from 'react-icons/ai'
+import React, { useRef } from 'react';
+import CategoryFilter from './Category/CategoryFilter';
+import Category from './Category/Category'; // ← brand filter
+import Price from './Price/Price';
+import Colors from './Colors/Colors';
+import './sidebar.css';
 
-const Sidebar = ({handleChange}) => {
-  return <>
-  <section className="sidebar">
-    <div className="logo-container">
-        <Category handleChange={handleChange}/>
-        <hr />
-        <Price handleChange={handleChange}/>
-        <hr />
-        <Colors handleChange={handleChange}/>
-        
-    </div>
-  </section>
-  </>
-    
-}
+const Sidebar = ({
+  handleBrandChange,
+  handleCategoryChange,
+  handleColorChange,
+  handlePriceChange,
+  resetFilters
+}) => {
+  const formRef = useRef();
 
-export default Sidebar
+  const handleReset = () => {
+    resetFilters(); // reset state in App.jsx
+    formRef.current.reset(); // reset radio buttons visually
+  };
+
+  return (
+    <section className="sidebar">
+      <form ref={formRef} className="logo-container">
+        <CategoryFilter handleChange={handleCategoryChange} />
+        <hr />
+
+        <Category handleChange={handleBrandChange} />
+        <hr />
+
+        <Price handleChange={handlePriceChange} />
+        <hr />
+
+        <Colors handleChange={handleColorChange} />
+        <hr />
+
+        <button className="reset-btn" type="button" onClick={handleReset}>
+          🔄 Reset Filters
+        </button>
+      </form>
+    </section>
+  );
+};
+
+export default Sidebar;

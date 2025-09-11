@@ -8,7 +8,7 @@ const Cart = ({ cartItems, removeFromCart, increaseQuantity, decreaseQuantity, c
   return (
     <section className="cart-wrapper">
           <button className="back-btn" onClick={toggleCart}>← Back to Products</button>
-      <h2>Your Cart</h2>
+      <h2 style={{marginBottom:"15px"}}>Your Cart</h2>
       {cartItems.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
