@@ -19,16 +19,7 @@ nav{
     color: white;
 }
 
-input{
-    padding: 12px 20px;
-    border: 2px solid blue;
-    background-color: #f7f6f6;
-    outline: none;
-    border-radius: 5px;
-    position: relative;
-    width :14rem;
 
-}
 
 .cart-container{
     display: flex;

@@ -38,3 +38,9 @@ margin-top: 110px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+ .scrollable-section {
+
+    background-image: url('./../img/bg-img4.jpg');
+    z-index: 1;
+    scrollbar-width: none;
+    }

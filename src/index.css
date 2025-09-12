@@ -1,18 +1,3 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
+@import "tailwindcss";
 
-a{
-    text-decoration: none;
-    color: rgb(97,97,97);
-}
 
-li{
-    list-style: none;
-}
-
-#root{
-    margin:0;
-}

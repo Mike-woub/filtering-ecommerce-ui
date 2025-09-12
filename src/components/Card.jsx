@@ -4,7 +4,7 @@ import {AiFillStar} from 'react-icons/ai'
 
 const Card = ({img, title, star, reviews, prevPrice, newPrice, addToCart}) => {
   return (
-     <section className="card">
+     <section className="mt-8">
            <div className="card-img-wrapper"><img src={img} alt={title} className='card-img' /></div>
            
            <div className="card-details">
